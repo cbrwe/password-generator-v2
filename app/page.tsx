@@ -14,7 +14,7 @@ export default function PasswordGenerator() {
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercase = 'abcdefghijklmnopqrstuvwxyz';
     const numbers = '0123456789';
-    const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const symbols = '!@#$%^&*()_+-=[]{}|;:,.<?';
     
     let characters = '';
     if (includeUppercase) characters += uppercase;
@@ -108,7 +108,7 @@ export default function PasswordGenerator() {
           
           {/* Length control */}
           <div className="flex items-center gap-1 flex-shrink-0">
-            <span className="text-xs text-gray-600 whitespace-nowrap">Len:</span>
+            <span className="text-xs text-gray-600 whitespace-nowrap">Length:</span>
             <input
               type="range"
               min="4"
@@ -122,24 +122,24 @@ export default function PasswordGenerator() {
           
           {/* Options checkboxes */}
           <div className="flex gap-1 flex-shrink-0">
-            <label className="flex items-center cursor-pointer" title="Uppercase">
+            <label className="flex items-center cursor-pointer" title="Uppercase Letters">
               <input
                 type="checkbox"
                 checked={includeUppercase}
                 onChange={(e) => setIncludeUppercase(e.target.checked)}
                 className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500"
               />
-              <span className="text-xs text-gray-600 ml-1">A</span>
+              <span className="text-xs text-gray-600 ml-1">Uppercase Letters</span>
             </label>
             
-            <label className="flex items-center cursor-pointer" title="Lowercase">
+            <label className="flex items-center cursor-pointer" title="Lowercase Letters">
               <input
                 type="checkbox"
                 checked={includeLowercase}
                 onChange={(e) => setIncludeLowercase(e.target.checked)}
                 className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500"
               />
-              <span className="text-xs text-gray-600 ml-1">a</span>
+              <span className="text-xs text-gray-600 ml-1">Lowercase Letters</span>
             </label>
             
             <label className="flex items-center cursor-pointer" title="Numbers">
@@ -149,7 +149,7 @@ export default function PasswordGenerator() {
                 onChange={(e) => setIncludeNumbers(e.target.checked)}
                 className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500"
               />
-              <span className="text-xs text-gray-600 ml-1">1</span>
+              <span className="text-xs text-gray-600 ml-1">Numbers</span>
             </label>
             
             <label className="flex items-center cursor-pointer" title="Symbols">
@@ -159,7 +159,7 @@ export default function PasswordGenerator() {
                 onChange={(e) => setIncludeSymbols(e.target.checked)}
                 className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500"
               />
-              <span className="text-xs text-gray-600 ml-1">@</span>
+              <span className="text-xs text-gray-600 ml-1">Symbols</span>
             </label>
           </div>
         </div>
