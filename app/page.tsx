@@ -14,7 +14,7 @@ export default function PasswordGenerator() {
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercase = 'abcdefghijklmnopqrstuvwxyz';
     const numbers = '0123456789';
-    const symbols = '!@#$%^&*()_+-=[]{}|;:,.<?';
+    const symbols = '!@#$%^&*()_+-=[]{}|;:,.';
     
     let characters = '';
     if (includeUppercase) characters += uppercase;
@@ -69,20 +69,18 @@ export default function PasswordGenerator() {
 
   return (
     <div className="bg-white p-2 min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-[600px] h-auto max-h-[120px] bg-white border border-gray-200 rounded-lg shadow-sm p-3">
-        {/* Main horizontal layout */}
-        <div className="flex items-center gap-2 h-full">
+      <div className="w-full max-w-[600px] bg-white border border-gray-200 rounded-lg shadow-sm p-3">
+        {/* Password display and controls row */}
+        <div className="flex items-center gap-2 mb-2">
           {/* Password display section */}
           <div className="flex-1 min-w-0">
-            <div className="relative">
-              <input
-                type="text"
-                value={password}
-                readOnly
-                placeholder="Click Generate"
-                className="w-full h-8 px-2 text-sm font-mono border border-gray-200 rounded bg-gray-50 focus:outline-none truncate"
-              />
-            </div>
+            <input
+              type="text"
+              value={password}
+              readOnly
+              placeholder="Click Generate"
+              className="w-full h-8 px-2 text-sm font-mono border border-gray-200 rounded bg-gray-50 focus:outline-none"
+            />
           </div>
           
           {/* Generate button */}
@@ -119,49 +117,49 @@ export default function PasswordGenerator() {
             />
             <span className="text-xs text-gray-600 w-6 text-center">{length}</span>
           </div>
+        </div>
+        
+        {/* Checkboxes row */}
+        <div className="flex flex-wrap gap-3 justify-center">
+          <label className="flex items-center cursor-pointer" title="Include uppercase letters">
+            <input
+              type="checkbox"
+              checked={includeUppercase}
+              onChange={(e) => setIncludeUppercase(e.target.checked)}
+              className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500 mr-1"
+            />
+            <span className="text-xs text-gray-600">Uppercase</span>
+          </label>
           
-          {/* Options checkboxes */}
-          <div className="flex gap-1 flex-shrink-0">
-            <label className="flex items-center cursor-pointer" title="Uppercase Letters">
-              <input
-                type="checkbox"
-                checked={includeUppercase}
-                onChange={(e) => setIncludeUppercase(e.target.checked)}
-                className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500"
-              />
-              <span className="text-xs text-gray-600 ml-1">Uppercase Letters</span>
-            </label>
-            
-            <label className="flex items-center cursor-pointer" title="Lowercase Letters">
-              <input
-                type="checkbox"
-                checked={includeLowercase}
-                onChange={(e) => setIncludeLowercase(e.target.checked)}
-                className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500"
-              />
-              <span className="text-xs text-gray-600 ml-1">Lowercase Letters</span>
-            </label>
-            
-            <label className="flex items-center cursor-pointer" title="Numbers">
-              <input
-                type="checkbox"
-                checked={includeNumbers}
-                onChange={(e) => setIncludeNumbers(e.target.checked)}
-                className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500"
-              />
-              <span className="text-xs text-gray-600 ml-1">Numbers</span>
-            </label>
-            
-            <label className="flex items-center cursor-pointer" title="Symbols">
-              <input
-                type="checkbox"
-                checked={includeSymbols}
-                onChange={(e) => setIncludeSymbols(e.target.checked)}
-                className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500"
-              />
-              <span className="text-xs text-gray-600 ml-1">Symbols</span>
-            </label>
-          </div>
+          <label className="flex items-center cursor-pointer" title="Include lowercase letters">
+            <input
+              type="checkbox"
+              checked={includeLowercase}
+              onChange={(e) => setIncludeLowercase(e.target.checked)}
+              className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500 mr-1"
+            />
+            <span className="text-xs text-gray-600">Lowercase</span>
+          </label>
+          
+          <label className="flex items-center cursor-pointer" title="Include numbers">
+            <input
+              type="checkbox"
+              checked={includeNumbers}
+              onChange={(e) => setIncludeNumbers(e.target.checked)}
+              className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500 mr-1"
+            />
+            <span className="text-xs text-gray-600">Numbers</span>
+          </label>
+          
+          <label className="flex items-center cursor-pointer" title="Include symbols">
+            <input
+              type="checkbox"
+              checked={includeSymbols}
+              onChange={(e) => setIncludeSymbols(e.target.checked)}
+              className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-1 focus:ring-blue-500 mr-1"
+            />
+            <span className="text-xs text-gray-600">Symbols</span>
+          </label>
         </div>
       </div>
       
